@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+{% if request.user.is_authenticated %}
+<div class="container-fluid">
+  <div class="row">
+
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar mt-5">
+      <div class="sidebar-sticky" style="padding-bottom: 100%">
+        <ul class="nav flex-column">
+
+          <li class="nav-item">
+            <a class="nav-link {% if section == 'editProfile' %}active{% endif %} " href="{% url 'editProfile' %}">
+              <span data-feather="file"></span>
+              Edit Profile
+              {% if section == 'editProfile' %}
+              <span class="sr-only">(current)</span>
+              {% endif %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'childform' %}">
+              <span data-feather="thumbs-up"></span>
+              Add Child
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'childlist' user.id %}">
+              <span data-feather="thumbs-up"></span>
+              Child
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'attendencelist' user.id %}">
+              <span data-feather="thumbs-up"></span>
+              Attendance Dropoff
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pick' user.id %}">
+              <span data-feather="thumbs-up"></span>
+              Attendance Pickup
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'notifcationlistparent' %}">
+              <span data-feather="bell"></span>
+              Announcements
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'childstorieslistparent' user.id %}">
+              <span data-feather="book"></span>
+              Child Stories
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'childlistprofile' user.id %}">
+              <span data-feather="user"></span>
+              Students' Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'leavesview'  %}">
+              <span data-feather="layers"></span>
+            Leave Application
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'leaveslist' user.id  %}">
+              <span data-feather="layers"></span>
+              Leaves
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="http://abckindergarden.hopto.org:5000/video_feed">
+              <span data-feather="layers"></span>
+              Camera
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'games' %}">
+              <span data-feather="layers"></span>
+              Games
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4" style="background-image: url({% static 'one.jpeg' %});height:600px">
+   <!-- <div class="row">
+     <div class="col-md-3"></div>
+     <div class="col-md-2">
+      <img src="{% static 'two.jfif' %}">
+    </div>
+    <div class="col-md-2">
+
+      <center><h1>ABC KinderGarten</h1></center><br><br><br>
+</div>
+    </div> -->
+      {% block content1 %}
+      {% endblock %}
+    </main>
+
+  </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block title %}ALUM{% endblock %}
+
+{% block content %}
+
+<div class="mx-auto mb-5" style="width: 350px;">
+<div class="card" style="width: 22rem;">
+    
+    <div class="card-body">
+      <form action="{% url 'editProfile' %}" method="POST">
+        {% csrf_token %}
+      <h5 class="card-title font-weight-bold">{{ request.user.username }}</h5>
+      <table class="table">
+          
+          <tbody>
+            <tr>
+              
+              <td>username</td>
+              <td><input class="form-control border-0 bg-transparent" name="username" type="text" placeholder="{{ request.user.username }}" value="{{ request.user.username }}" readonly></td>
+              
+            </tr>
+            <tr>
+              
+              <td>First Name</td>
+              <td><input class="form-control border-0 bg-transparent" name="first_name" type="text" placeholder="{{ request.user.first_name }}" value="{{ request.user.first_name }}" autocomplete="off"></td>
+              
+              
+            </tr>
+            <tr>
+              
+              <td>Last Name</td>
+              <td><input class="form-control border-0 bg-transparent" name="last_name" type="text" placeholder="{{ request.user.last_name }}" value="{{ request.user.last_name }}" autocomplete="off"></td>
+              
+              
+            </tr>
+            <tr>
+              
+                <td>Email ID</td>
+                <td><input class="form-control border-0 bg-transparent" name="email" type="text" placeholder="{{ request.user.email }}" value="{{ request.user.email }}" autocomplete="off" ></td>
+        
+                
+              </tr>
+              {% if profile %}
+              <tr>
+              
+                  <td>Teacher/Parent</td>
+                  <td>{{ profile.Teacher_or_Parent }}</td>
+                  
+                </tr>
+                <tr>
+              
+                    <td>Contact Number</td>
+                    <td>{{ profile.contactNumber }}</td>
+                    
+                  </tr>
+                {% endif %}
+                <tr>
+                  <td colspan="2" class="border-0">
+                      <input type="hidden" name="password" value="{{ request.user.password }}" id="id_password">
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="border-0">
+                    <input type="submit" class="btn btn-primary" value="Edit User">
+                  </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="border-0">
+                      <a  class="btn btn-primary" value="Update Profile Information" href="{% url 'editProfileUSer' %}">Update Profile Information</a>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td colspan="2" class="border-0">
+                        <a  class="btn btn-primary" value="Change Password" href="{% url 'change_password' %}">Change Password</a>
+                      </td>
+                    </tr>
+                  
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'parent/homeparent.html' %}
+
+{% block content1 %}
+
+
+<table class="table">
+        <thead>
+          <tr>
+        
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Files</th>
+            
+         
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in obj %}
+          <tr>
+           
+            <td>{{i.description}}</td>
+            <td>{{i.Date}}</td>
+             <td><a href="/media/{{i.files}}">{{i.files}}</a>
+            </td>
+        
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

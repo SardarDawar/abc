@@ -1,0 +1,29 @@
+{% extends 'teacher/hometeacher.html' %}
+
+{% block content1 %}
+
+
+<table class="table">
+        <thead>
+          <tr>
+        
+            <th scope="col">Name</th>
+            <th scope="col">Parent</th>
+            <th scope="col">Child Stories</th>
+         
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in obj %}
+          <tr>
+           
+            <td>{{i.name}}</td>
+            <td>{{i.parent}}</td>
+        
+            <td scope="col"><a href="{% url 'child_storiesview' i.id %}">Add Child Story</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

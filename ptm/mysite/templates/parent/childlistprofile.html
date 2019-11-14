@@ -1,0 +1,31 @@
+{% extends 'parent/homeparent.html' %}
+
+{% block content1 %}
+
+
+<table class="table">
+        <thead>
+          <tr>
+        
+            <th scope="col">Name</th>
+            <th scope="col">Parent</th>
+            <th scope="col">Date Of Birth</th>
+            <th scope="col">Classname</th>
+            <th scope="col">upload Image</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in obj %}
+          <tr>
+           
+            <td>{{i.name}}</td>
+            <td>{{i.parent}}</td>
+            <td>{{i.Date_of_birth}}</td>
+            <td>{{i.classname}}</td>
+            <td scope="col"><a href="{% url 'childviewedit' i.id %}">Edit</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

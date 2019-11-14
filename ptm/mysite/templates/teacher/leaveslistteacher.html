@@ -1,0 +1,37 @@
+{% extends 'teacher/hometeacher.html' %}
+
+{% block content1 %}
+
+
+<table class="table">
+        <thead>
+          <tr>
+        
+            <th scope="col">Name</th>
+            <th scope="col">Title</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Files</th>
+            <th scope="col">Date</th>
+            <th scope="col">Approval</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in obj %}
+          <tr>
+           
+            <td>{{i.name}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.subject}}</td>
+            <td><a href="/media/{{i.files}}"> {{i.files}}</a></td>
+            <td>{{i.Date}}</td>
+            {% if i.approved %}
+            <td>Approved</td>
+            {% else %}
+            <td scope="col"><a href="{% url 'leavesviewedit' i.id %}">Approval Pending</a></td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}

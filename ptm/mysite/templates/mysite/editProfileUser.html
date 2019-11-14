@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Compay Name{% endblock %}
+
+{% block content %}
+
+<div class="mx-auto mb-5" style="width: 350px;">
+<div class="card" style="width: 22rem;">
+    
+    <div class="card-body">
+      <form action="{% url 'editProfileUSer' %}" method="POST">
+        {% csrf_token %}
+      <h5 class="card-title font-weight-bold">{{ request.user.username }}</h5>
+      <table class="table">
+          
+          <tbody>
+            <tr>
+              
+              <td>username</td>
+              <td><input class="form-control border-0 bg-transparent" name="username" type="text" placeholder="{{ request.user.username }}" value="{{ request.user.username }}" readonly></td>
+              
+            </tr>
+
+              {% if profile %}
+              <tr>
+              
+                  <td>Teacher/Parent</td>
+                  <td>
+                        <select  class="form-control" id="exampleFormControlSelect2" name="Teacher_or_Parent">
+                                <option value="Teacher" selected>Teacher</option>
+                                <option value="Parent">Parent</option>
+                              </select>
+
+                  </td>
+                  
+                  
+                </tr>
+                <tr>
+              
+                    <td>Contact Number</td>
+                    <td>
+                            <input class="form-control border-0 bg-transparent" name="contactNumber" type="text" placeholder="{{ profile.contactNumber }}" value="{{ profile.contactNumber }}" >
+
+                    </td>
+                    
+                    
+                  </tr>
+                {% endif %}
+
+                <tr>
+                    <td colspan="2" class="border-0">
+                      <input type="submit" value="Edit Profile Information" class="btn btn-primary">
+                    </td>
+                  </tr>
+                  
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

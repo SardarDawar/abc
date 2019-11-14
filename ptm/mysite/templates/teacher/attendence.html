@@ -1,0 +1,42 @@
+{% extends 'teacher/hometeacher.html' %}
+
+{% block content1 %}
+
+
+<table class="table">
+        <thead>
+          <tr>
+        
+            <th scope="col">Name</th>
+            <th scope="col">Parent</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Dropped School</th>
+            <th scope="col">Drop time</th>
+            <th scope="col">Remove</th>
+       
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in obj %}
+            {% for k in a %}
+           
+            {% if i.Dropped_or_pickup %}
+          <tr>
+           
+            <td>{{i.name}}</td>
+            <td>{{i.parent}}</td>
+            <td> {{k}}</td>
+       
+            <td>{{i.Dropped_or_pickup}}</td>
+            <td>{{i.drop_time}}</td>
+
+            <td scope="col"><a href="{% url 'attenndenceformedit' i.id %}">Remove</a></td>
+        </tr>
+{% endif %}
+{% endfor %}
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}
+
