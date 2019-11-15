@@ -84,7 +84,7 @@ class childform(forms.ModelForm):
 class attendenceform(forms.ModelForm):
     class Meta:
         model = attendence
-        exclude = ['parent','name','Father_id']
+        exclude = ['parent','classname','name','Father_id']
 
 class notificationform(forms.ModelForm):
     class Meta:

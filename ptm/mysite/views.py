@@ -451,6 +451,7 @@ def notificationview(request):
 
 
 def notifcationlist(request):
+  
     cla=Class.objects.get(teacher=request.user)
     obj = Notifications.objects.filter(classname=cla)
     context = {
